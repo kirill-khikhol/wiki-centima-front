@@ -20,6 +20,7 @@ export class AppComponent {
   addMessage() {
     if (this.newMessage.length != 0) {
       this.httpService.addMessage(new WikiMessageForJson(this.newMessage)).subscribe(() => {
+        console.log("addMessage works");
         this.getAllMessages();
       });
       this.newMessage = "";
@@ -37,7 +38,9 @@ export class AppComponent {
   }
 
   removeMessage(msg: WikiMessage) {
+    console.log("message removed " + msg.id);
     this.httpService.removeMessage(msg.id).subscribe(() => {
+      console.log("message removed");
       this.getAllMessages();
     });
 
